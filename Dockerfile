@@ -1,4 +1,4 @@
-FROM n8nio/n8n:stable
+FROM n8nio/n8n:stable-debian
 
 USER root
 
