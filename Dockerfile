@@ -1,4 +1,4 @@
-FROM node:20-bookworm-slim
+FROM node:18-bookworm-slim
 
 ENV NODE_ENV=production
 WORKDIR /data
@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-RUN npm install -g n8n@latest
+# Fixar n8n para evitar incompatibilidade com isolated-vm
+RUN npm install -g n8n@1.99.0
 
 COPY requirements.txt /tmp/requirements.txt
 RUN python3 -m pip install --upgrade pip setuptools wheel \
