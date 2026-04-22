@@ -2,14 +2,12 @@ FROM n8nio/n8n:latest
 
 USER root
 
-# Pacotes do sistema
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Pacotes do sistema (Alpine)
+RUN apk add --no-cache \
     ffmpeg \
     python3 \
-    python3-pip \
-    python3-venv \
-    ca-certificates \
-  && rm -rf /var/lib/apt/lists/*
+    py3-pip \
+    ca-certificates
 
 # Python deps
 COPY requirements.txt /tmp/requirements.txt
